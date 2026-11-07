@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portfolio</title>
+<title>Jasmine Mathisen | Full-Stack Developer and Cybersecurity</title>
+<meta name="description" content="Portfolio of Jasmine Mathisen, a full-stack developer with a cybersecurity focus.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@400;500;600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
@@ -18,9 +19,9 @@
     --purple: #8b5cf6;
     --blue: #3b82f6;
     --teal: #14d8c4;
-    --grad: linear-gradient(90deg, var(--purple), var(--blue), var(--teal));
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
   body {
     background:
       radial-gradient(900px 520px at 68% 18%, rgba(110, 70, 230, 0.30), transparent 70%),
@@ -145,7 +146,6 @@
     border-radius: 14px;
     backdrop-filter: blur(6px);
   }
-  .quote .mark { font-family: "Jost", serif; font-size: 44px; line-height: 0.6; color: var(--purple); }
   .quote p { color: var(--muted); font-size: 15px; margin-top: 8px; }
   .quote .sig {
     font-family: "Great Vibes", cursive;
@@ -155,38 +155,8 @@
     margin-top: 6px;
   }
 
-  /* Service cards */
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-    padding: 0 48px;
-  }
-  .card {
-    display: flex; gap: 20px;
-    background: linear-gradient(180deg, rgba(17, 24, 48, 0.7), rgba(13, 18, 34, 0.7));
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 28px;
-  }
-  .icon {
-    flex: none;
-    width: 68px; height: 68px;
-    border-radius: 50%;
-    display: grid; place-items: center;
-    border: 1px solid var(--purple);
-    background: rgba(139, 92, 246, 0.12);
-    color: #b79bff;
-  }
-  .icon.blue { border-color: var(--blue); background: rgba(59, 130, 246, 0.12); color: #7fb0ff; }
-  .icon.teal { border-color: var(--teal); background: rgba(20, 216, 196, 0.1); color: var(--teal); }
-  .icon svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-  .card h3 { font-size: 22px; margin-bottom: 8px; }
-  .card p { color: var(--muted); font-size: 15px; }
-  .card .more { display: inline-block; margin-top: 14px; color: var(--blue); font-size: 14px; }
-
   /* Sections */
-  .section { padding: 72px 48px 0; }
+  .section { padding: 72px 48px 0; scroll-margin-top: 16px; }
   .section-head {
     display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap;
     margin-bottom: 28px;
@@ -198,6 +168,10 @@
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 22px;
   }
+  .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+  /* Projects */
   .project {
     display: flex; flex-direction: column;
     background: var(--panel);
@@ -206,7 +180,8 @@
     overflow: hidden;
   }
   .thumb {
-    height: 190px;
+    aspect-ratio: 5 / 2;
+    min-height: 190px;
     display: grid; place-items: center;
     background: linear-gradient(135deg, #1a1040, #0c1a3a 55%, #0a2a2c);
     color: var(--muted);
@@ -214,20 +189,23 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     border-bottom: 1px solid var(--border);
+    overflow: hidden;
   }
+  .thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
   .body { padding: 22px 24px 24px; flex: 1; display: flex; flex-direction: column; }
   .project h3 { font-size: 24px; font-weight: 500; }
   .project .tag { color: var(--muted); font-size: 15px; margin-top: 2px; }
   .project p.desc { margin-top: 12px; font-size: 15px; color: var(--text); }
-  .arrow {
-    margin-left: auto; margin-top: auto; align-self: flex-end;
-    width: 44px; height: 44px; border-radius: 50%;
-    border: 1px solid var(--border);
-    display: grid; place-items: center;
-    color: var(--text);
+  .proj-links {
+    margin-top: auto;
+    padding-top: 18px;
+    display: flex; gap: 18px; flex-wrap: wrap;
+    font-size: 14px;
   }
-  .arrow svg { width: 16px; height: 16px; }
+  .proj-links a { color: var(--blue); }
+  .proj-links a:hover { color: var(--text); }
 
+  /* Skills and link cards */
   .plain {
     background: var(--panel);
     border: 1px solid var(--border);
@@ -237,6 +215,9 @@
   .plain h3 { font-size: 22px; font-weight: 500; }
   .plain .tag { color: var(--muted); font-size: 15px; margin-top: 4px; }
   .plain p.desc { color: var(--muted); font-size: 15px; margin-top: 10px; }
+  a.linkcard { display: block; transition: border-color 0.2s, transform 0.2s; }
+  a.linkcard:hover { border-color: var(--purple); transform: translateY(-2px); }
+  a.linkcard .tag { color: var(--blue); word-break: break-all; }
 
   footer {
     margin-top: 72px;
@@ -254,13 +235,16 @@
     .hero { grid-template-columns: minmax(0, 1fr); }
     .portrait { order: -1; max-width: 360px; }
     .quote { justify-self: center; margin-top: 0; }
+    .grid.two { grid-template-columns: minmax(0, 1fr); }
+    .grid.three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 760px) {
     nav { padding: 16px; }
     .links { order: 3; width: 100%; gap: 14px; font-size: 14px; }
     .nav-right { margin-left: auto; }
     .social { display: none; }
-    .hero, .cards, .section, footer { padding-left: 16px; padding-right: 16px; }
+    .grid.three { grid-template-columns: minmax(0, 1fr); }
+    .hero, .section, footer { padding-left: 16px; padding-right: 16px; }
     .hero { padding-top: 32px; }
     .eyebrow { letter-spacing: 0.15em; font-size: 11px; }
     h1 { font-size: 38px; }
@@ -273,23 +257,19 @@
 <body>
 
 <nav>
-  <a class="logo" href="#home">Your <span>Name</span></a>
+  <a class="logo" href="#home">Jasmine <span>Mathisen</span></a>
   <div class="links">
     <a href="#home">Home</a>
-    <a href="#about">About</a>
     <a href="#projects">Projects</a>
     <a href="#skills">Skills</a>
-    <a href="#experience">Experience</a>
-    <a href="#certifications">Certifications</a>
-    <a href="#contact">Contact</a>
+    <a href="#links">Links</a>
   </div>
   <div class="nav-right">
     <div class="social">
-      <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg></a>
-      <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.4V9h3.4v1.6c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.1 2.1 2.1 0 0 1 0 4.1zM7.1 20.5H3.6V9h3.5v11.5z"/></svg></a>
-      <a href="#contact" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M2 5h20v14H2zm2 2v.5l8 5 8-5V7zm16 10V9.8l-8 5-8-5V17z"/></svg></a>
+      <a href="https://github.com/matzmama" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg></a>
+      <a href="https://www.linkedin.com/in/jasmine-mathisen-426a4924a/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.4V9h3.4v1.6c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.1 2.1 2.1 0 0 1 0 4.1zM7.1 20.5H3.6V9h3.5v11.5z"/></svg></a>
     </div>
-    <a class="pill" href="#contact">Let's Connect <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    <a class="pill" href="https://www.linkedin.com/in/jasmine-mathisen-426a4924a/" target="_blank" rel="noopener">Let's Connect <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
   </div>
 </nav>
 
@@ -321,88 +301,87 @@
     </g>
   </svg>
   <div>
-    <p class="eyebrow">Technology &bull; Data &bull; Security &bull; Solutions</p>
-    <h1>Turning Ideas Into <span class="line2">Secure, Data-Driven</span> <span class="line3">Solutions</span></h1>
-    <p class="lede">Add a short introduction here: what you build, analyze, or secure, and the problems you solve.</p>
+    <p class="eyebrow">Full-Stack &bull; Cybersecurity &bull; Data Analytics</p>
+    <h1>Full-Stack Developer <span class="line2">Building Secure</span> <span class="line3">Web Applications</span></h1>
+    <p class="lede">I build full-stack web apps with React, FastAPI and Python, test them with security tools, and analyze data with Python and SQL.</p>
     <div class="buttons">
       <a class="btn primary" href="#projects">View My Work <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-      <a class="btn" href="#contact">Get In Touch</a>
+      <a class="btn" href="#links">Get In Touch</a>
     </div>
   </div>
   <div class="portrait">
-    <img src="profile-cutout.png" alt="Headshot of Your Name">
+    <img src="profile-cutout.png" alt="Headshot of Jasmine Mathisen">
   </div>
   <div class="quote">
-    <span class="mark">&ldquo;</span>
-    <p>Replace this with your own quote.<br>Keep it short and personal.</p>
-    <div class="sig">Your Name</div>
-  </div>
-</section>
-
-<section class="cards" id="about">
-  <div class="card">
-    <div class="icon"><svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></div>
-    <div>
-      <h3>Software Engineering</h3>
-      <p>Describe your software engineering work here.</p>
-      <a class="more" href="#projects">Learn More &rarr;</a>
-    </div>
-  </div>
-  <div class="card">
-    <div class="icon blue"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
-    <div>
-      <h3>Cybersecurity</h3>
-      <p>Describe your security work here.</p>
-      <a class="more" href="#projects">Learn More &rarr;</a>
-    </div>
-  </div>
-  <div class="card">
-    <div class="icon teal"><svg viewBox="0 0 24 24"><path d="M5 20V12M12 20V5M19 20v-9"/></svg></div>
-    <div>
-      <h3>Data Analytics</h3>
-      <p>Describe your data analytics work here.</p>
-      <a class="more" href="#projects">Learn More &rarr;</a>
-    </div>
+    <p class="eyebrow">Currently</p>
+    <p>Open to junior full-stack developer, cybersecurity and technical education roles.</p>
+    <div class="sig">Jasmine Mathisen</div>
   </div>
 </section>
 
 <section class="section" id="projects">
   <div class="section-head">
     <div>
-      <p class="eyebrow">Featured Projects</p>
-      <h2>Real Projects. Real Impact.</h2>
-      <p class="sub">A selection of projects that demonstrate my work.</p>
+      <p class="eyebrow">Projects</p>
+      <h2>Selected Work</h2>
+      <p class="sub">Two full-stack platforms and two front-end demos.</p>
     </div>
-    <a class="pill" href="#projects">View All Projects <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    <a class="pill" href="https://github.com/matzmama" target="_blank" rel="noopener">View GitHub <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
   </div>
-  <div class="grid">
+  <div class="grid two">
+
     <div class="project">
-      <div class="thumb">Project screenshot</div>
+      <div class="thumb"><img src="images/huddl-job-seeker.png" alt="Huddl job seeker workspace with the sidebar and career command center"></div>
       <div class="body">
-        <h3>Project One</h3>
-        <p class="tag">Project type</p>
-        <p class="desc">Short description of this project.</p>
-        <span class="arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        <h3>Huddl</h3>
+        <p class="tag">Career workspace for job seekers and coaches</p>
+        <p class="desc">A private workspace with a job seeker dashboard and a coach portal. Job seekers track applications and documents. Coaches review client progress and prepare sessions. It does not scrape job boards or store job board credentials. A full walkthrough is available on request.</p>
+        <div class="proj-links">
+          <a href="https://huddl-sooty.vercel.app/" target="_blank" rel="noopener">Live site</a>
+          <a href="https://www.linkedin.com/in/jasmine-mathisen-426a4924a/" target="_blank" rel="noopener">Request a demo</a>
+        </div>
       </div>
     </div>
+
     <div class="project">
-      <div class="thumb">Project screenshot</div>
+      <div class="thumb"><img src="images/areiva-pipeline.png" alt="AREIVA lead pipeline board"></div>
       <div class="body">
-        <h3>Project Two</h3>
-        <p class="tag">Project type</p>
-        <p class="desc">Short description of this project.</p>
-        <span class="arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        <h3>AREIVA</h3>
+        <p class="tag">Platform for real estate investors</p>
+        <p class="desc">A web platform with a public marketing site and a protected dashboard for managing leads, deals, campaigns and buyers. It supports email and Google sign-in and is in early access. A full walkthrough is available on request.</p>
+        <div class="proj-links">
+          <a href="https://arei-pro-ai-phase-1.vercel.app/" target="_blank" rel="noopener">Live site</a>
+          <a href="https://www.linkedin.com/in/jasmine-mathisen-426a4924a/" target="_blank" rel="noopener">Request a demo</a>
+        </div>
       </div>
     </div>
+
     <div class="project">
-      <div class="thumb">Project screenshot</div>
+      <div class="thumb">Silver Crest Estates</div>
       <div class="body">
-        <h3>Project Three</h3>
-        <p class="tag">Project type</p>
-        <p class="desc">Short description of this project.</p>
-        <span class="arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        <h3>Silver Crest Estates</h3>
+        <p class="tag">Front-end demo</p>
+        <p class="desc">A responsive multi-page website concept for a fictional mountain event venue, built with semantic HTML and CSS, with keyboard skip links for accessibility. Portfolio demo with sample content.</p>
+        <div class="proj-links">
+          <a href="https://silvercresteventcenter.vercel.app/" target="_blank" rel="noopener">Live site</a>
+          <a href="https://github.com/matzmama/Event-Center-Website" target="_blank" rel="noopener">Code</a>
+        </div>
       </div>
     </div>
+
+    <div class="project">
+      <div class="thumb">Lil Fish Community Center</div>
+      <div class="body">
+        <h3>Lil Fish Community Center</h3>
+        <p class="tag">Front-end demo</p>
+        <p class="desc">A responsive multi-page website concept for a fictional small-town community center that promotes seasonal events and vendor booths, built with HTML and CSS. Portfolio demo with sample content.</p>
+        <div class="proj-links">
+          <a href="https://lilfisheventpage.vercel.app/" target="_blank" rel="noopener">Live site</a>
+          <a href="https://github.com/matzmama/lil-fish-event-page" target="_blank" rel="noopener">Code</a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -411,73 +390,74 @@
     <div>
       <p class="eyebrow">Skills</p>
       <h2>What I Work With</h2>
-      <p class="sub">Replace these with your own tools and technologies.</p>
+      <p class="sub">The tools and practices I use most.</p>
     </div>
   </div>
   <div class="grid">
     <div class="plain">
       <h3>Software Engineering</h3>
-      <p class="desc">Language 1, Language 2, Framework 1, Framework 2</p>
+      <p class="desc">React, JavaScript, Python, FastAPI, Tailwind CSS, Firebase, Supabase, HTML and CSS, REST APIs, Vercel</p>
     </div>
     <div class="plain">
       <h3>Cybersecurity</h3>
-      <p class="desc">Tool 1, Tool 2, Practice 1, Practice 2</p>
+      <p class="desc">CompTIA Security+ certified, vulnerability assessment, ZAP, npm audit, pip audit, Kali Linux, network security, ethical hacking, Linux and Windows administration</p>
     </div>
     <div class="plain">
       <h3>Data Analytics</h3>
-      <p class="desc">Language 1, Database 1, Visualization Tool 1</p>
+      <p class="desc">Python, pandas, SQL, Jupyter Notebook, Streamlit</p>
+    </div>
+    <div class="plain">
+      <h3>Developer Tools</h3>
+      <p class="desc">Git, GitHub, Claude Code, OpenAI Codex</p>
     </div>
   </div>
 </section>
 
-<section class="section" id="experience">
+<section class="section" id="links">
   <div class="section-head">
     <div>
-      <p class="eyebrow">Experience</p>
-      <h2>Where I've Worked</h2>
-      <p class="sub">Replace these with your own roles.</p>
+      <p class="eyebrow">Links</p>
+      <h2>Find Me Online</h2>
+      <p class="sub">My profiles and every live project in one place.</p>
     </div>
   </div>
-  <div class="grid">
-    <div class="plain">
-      <h3>Job Title</h3>
-      <p class="tag">Company Name &bull; Start Year &ndash; End Year</p>
-      <p class="desc">One or two sentences about what you did and what you achieved.</p>
-    </div>
-    <div class="plain">
-      <h3>Job Title</h3>
-      <p class="tag">Company Name &bull; Start Year &ndash; End Year</p>
-      <p class="desc">One or two sentences about what you did and what you achieved.</p>
-    </div>
+  <div class="grid three">
+    <a class="plain linkcard" href="https://www.linkedin.com/in/jasmine-mathisen-426a4924a/" target="_blank" rel="noopener">
+      <h3>LinkedIn</h3>
+      <p class="desc">The best way to reach me.</p>
+      <p class="tag">linkedin.com/in/jasmine-mathisen-426a4924a</p>
+    </a>
+    <a class="plain linkcard" href="https://github.com/matzmama" target="_blank" rel="noopener">
+      <h3>GitHub</h3>
+      <p class="desc">My code and repositories.</p>
+      <p class="tag">github.com/matzmama</p>
+    </a>
+    <a class="plain linkcard" href="https://huddl-sooty.vercel.app/" target="_blank" rel="noopener">
+      <h3>Huddl</h3>
+      <p class="desc">Career workspace for job seekers and coaches.</p>
+      <p class="tag">huddl-sooty.vercel.app</p>
+    </a>
+    <a class="plain linkcard" href="https://arei-pro-ai-phase-1.vercel.app/" target="_blank" rel="noopener">
+      <h3>AREIVA</h3>
+      <p class="desc">Platform for real estate investors.</p>
+      <p class="tag">arei-pro-ai-phase-1.vercel.app</p>
+    </a>
+    <a class="plain linkcard" href="https://silvercresteventcenter.vercel.app/" target="_blank" rel="noopener">
+      <h3>Silver Crest Estates</h3>
+      <p class="desc">Front-end demo for a fictional event venue.</p>
+      <p class="tag">silvercresteventcenter.vercel.app</p>
+    </a>
+    <a class="plain linkcard" href="https://lilfisheventpage.vercel.app/" target="_blank" rel="noopener">
+      <h3>Lil Fish Community Center</h3>
+      <p class="desc">Front-end demo for a fictional community center.</p>
+      <p class="tag">lilfisheventpage.vercel.app</p>
+    </a>
   </div>
 </section>
 
-<section class="section" id="certifications">
-  <div class="section-head">
-    <div>
-      <p class="eyebrow">Certifications</p>
-      <h2>Credentials</h2>
-      <p class="sub">Replace these with your own certifications.</p>
-    </div>
-  </div>
-  <div class="grid">
-    <div class="plain">
-      <h3>Certification Name</h3>
-      <p class="tag">Issuing Organization &bull; Year</p>
-    </div>
-    <div class="plain">
-      <h3>Certification Name</h3>
-      <p class="tag">Issuing Organization &bull; Year</p>
-    </div>
-  </div>
-</section>
-
-<footer id="contact">
-  <div>
-    <div class="logo">Your <span style="color: var(--purple)">Name</span></div>
-    <p style="margin-top: 8px">Email: you@example.com &bull; GitHub: github.com/yourname &bull; LinkedIn: linkedin.com/in/yourname</p>
-  </div>
-  <p>&copy; Your Name</p>
+<footer>
+  <div class="logo">Jasmine <span style="color: var(--purple)">Mathisen</span></div>
+  <p>&copy; 2026 Jasmine Mathisen</p>
 </footer>
 
 </body>
